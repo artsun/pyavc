@@ -11,7 +11,7 @@ SELinux log AVC denials parser. Make source policy files
 	```
 2)  To get **require** and **allow**s from logs/avc file:  
 	```  
-	 > python3 genavc.py -f logs/avc 
+	 > python3 fromavc.py -f logs/avc 
 	```
 	 #### output:
 	```
@@ -42,11 +42,11 @@ SELinux log AVC denials parser. Make source policy files
 ## Extras
 - to get simple policy file specify name without extension:
 	```
-	> python3 genavc.py -f logs/avc -te policy_filename
+	> python3 fromavc.py -f logs/avc -te policy_filename
 	```
  - to see avc tree (verbose) with **source_context -> target_context class { permissions }**:
 	```
-	> python3 genavc.py -f logs/avc -v
+	> python3 fromavc.py -f logs/avc -v
 	```
 	```
 	systemd_tmpfiles_t
