@@ -30,13 +30,13 @@ class ParseAVC:
         for key, val in self._skeys.items():
             res = val.search(line)
             if res is None:
-                print(f'pattern {val.pattern} not found in the string (line {num}) {line} ')
+                print(f'pattern <{key}> not found in the string (line {num}) {line} - SKIP')
                 return
             temp.update({key: res.group()})
         for el in ('scontext', 'tcontext'):
             temp[el] = self._context.search(temp[el])
             if temp[el] is None:
-                print(f'pattern {self._context.pattern} not found in the string (line {num}) {line} ')
+                print(f'pattern <{el}> not found in the string (line {num}) {line} - SKIP')
                 return
             temp[el] = temp[el].group()
 
@@ -97,12 +97,13 @@ if __name__ == '__main__':
     extra.add_argument('-v', dest='verbose', action='store_true', help='show tree as json')
 
     args = parser.parse_args()
+
     if args.file:
         with open(args.file) as fl:
             avc = ParseAVC(fl.read())
             avc.policy()
     else:
-        raise SystemExit('no path to AVC file')
+        raise SystemExit('no path to AVC file, use -h')
 
     if args.verbose:
         print(avc)
