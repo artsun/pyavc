@@ -1,5 +1,5 @@
 # pyavc  
-SELinux log AVC denials parser. Make source policy files  
+Audit log SELinux denials parser. Make source policy files  
 
 ## Usage
 1)  Get current SELinux denials using:
